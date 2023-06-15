@@ -3,7 +3,7 @@ import { DataTransactions } from '@/@types/DataTransactions'
 export async function useSummary() {
   async function getTransactions() {
     const res = await fetch('http://localhost:3000/api/transactions', {
-      cache: 'no-cache',
+      cache: 'no-store',
     })
     if (!res) {
       throw new Error('Faild to fetch data')

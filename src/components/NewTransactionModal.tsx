@@ -33,7 +33,7 @@ export default function NewTransactionModal() {
   async function postData(url: string = '', data = {}) {
     const response = await fetch(url, {
       method: 'POST',
-      cache: 'no-cache',
+      cache: 'no-store',
       body: JSON.stringify(data),
     })
 

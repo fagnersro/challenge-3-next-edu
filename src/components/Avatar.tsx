@@ -12,7 +12,7 @@ export default function Avatar({ src }: AvatarProps) {
         src={src}
         width={40}
         height={40}
-        alt=""
+        alt="Avatar"
         quality={100}
         priority
       />
