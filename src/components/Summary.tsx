@@ -5,6 +5,10 @@ import { ArrowDownCircle, ArrowUpCircle, DollarSign } from 'lucide-react'
 export default async function Summary() {
   const summary = await useSummary()
 
+  if (!summary) {
+    return <p>Loading...</p>
+  }
+
   return (
     <section
       className="

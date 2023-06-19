@@ -1,20 +1,23 @@
 import { DataTransactions } from '@/@types/DataTransactions'
+import { useFetch } from './useFetch'
 
 export async function useSummary() {
-  async function getTransactions() {
-    const res = await fetch('http://localhost:3000/api/transactions', {
-      cache: 'no-store',
-    })
-    if (!res) {
-      throw new Error('Faild to fetch data')
-    }
-    const transactions: DataTransactions[] = await res.json()
-    return transactions
-  }
+  // async function getTransactions() {
+  //   const res = await fetch('http://localhost:3000/api/transactions', {
+  //     cache: 'no-store',
+  //   })
+  //   if (!res) {
+  //     throw new Error('Faild to fetch data')
+  //   }
+  //   const transactions: DataTransactions[] = await res.json()
+  //   return transactions
+  // }
 
-  const transactions = await getTransactions()
+  // const transactions = await getTransactions()
 
-  const summary = transactions.reduce(
+  const { data } = useFetch<DataTransactions[]>('api/transactions')
+
+  const summary = data?.reduce(
     (acc, transaction) => {
       if (transaction.type === 'income') {
         acc.income += transaction.price

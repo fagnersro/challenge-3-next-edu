@@ -6,6 +6,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import z from 'zod'
+import { mutate } from 'swr'
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -41,6 +42,7 @@ export default function NewTransactionModal() {
   }
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
+    mutate('/api/transactions', data)
     postData('/api/transactions', data)
     reset()
   }
